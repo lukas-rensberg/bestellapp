@@ -33,6 +33,14 @@ body {
   flex-direction: column;
 }
 
+body.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
 header {
   background-color: var(--primary-color);
   box-shadow: var(--shadow);
