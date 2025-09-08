@@ -532,6 +532,24 @@ function updateModalPrice() {
 }
 
 /**
+ * Checks if item matches existing cart item
+ * @param {Object} newItem - New item to check
+ * @param {Object} cartItem - Existing cart item
+ * @returns {boolean} True if items match
+ */
+function checkMatchingItems(newItem, cartItem) {
+  if (newItem.name !== cartItem.name) return false;
+  if (newItem.price !== cartItem.price) return false;
+  if (newItem.customizations.length !== cartItem.customizations.length)
+    return false;
+
+  const sortedNew = [...newItem.customizations].sort();
+  const sortedCart = [...cartItem.customizations].sort();
+
+  return sortedNew.every((custom, index) => custom === sortedCart[index]);
+}
+
+/**
  * Adds configured item from modal to cart
  * @returns {void}
  */
@@ -545,7 +563,16 @@ function addModalItemToCart() {
     customizationPrice
   );
 
-  cart.push(cartItem);
+  const existingItemIndex = cart.findIndex((item) =>
+    checkMatchingItems(cartItem, item)
+  );
+
+  if (existingItemIndex !== -1) {
+    cart[existingItemIndex].quantity += cartItem.quantity;
+  } else {
+    cart.push(cartItem);
+  }
+
   updateCartCount();
   closeItemModal();
   highlightCartAfterAdd();
@@ -686,7 +713,6 @@ function updateMobileCartButton(totalItems, totalPrice) {
 
   count.textContent = totalItems;
   total.textContent = `${totalPrice.toFixed(2).replace(".", ",")} €`;
-  button.style.display = totalItems > 0 ? "flex" : "none";
 }
 
 /**
@@ -780,10 +806,7 @@ window.addEventListener("scroll", function () {
   let currentSection = "";
 
   sections.forEach((section) => {
-    const rect = section.getBoundingClientRect();
-    if (rect.top <= 150 && rect.bottom >= 150) {
-      currentSection = section.id.replace("section-", "");
-    }
+    currentSection = section.id.replace("section-", "");
   });
 
   if (currentSection) {

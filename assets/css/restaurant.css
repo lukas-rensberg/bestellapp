@@ -973,21 +973,6 @@
   }
 }
 
-/* Force mobile cart when restaurant name wraps */
-.restaurant-name-wrapped .cart-sticky {
-  display: none !important;
-}
-
-.restaurant-name-wrapped .mobile-cart-button {
-  display: flex !important;
-}
-
-.restaurant-name-wrapped .restaurant-hero,
-.restaurant-name-wrapped .menu-nav,
-.restaurant-name-wrapped .menu-main {
-  margin-right: 0 !important;
-}
-
 @media (max-width: 768px) {
   .restaurant-details h1 {
     font-size: 2rem;
