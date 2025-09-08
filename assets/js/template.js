@@ -87,7 +87,12 @@ function createCartItemTemplate(item, customizationsList, priceText) {
         ${customizationsList}
         <div class="cart-item-price-line">${priceText}</div>
       </div>
-      ${createCartControlsTemplate(item.id, item.quantity)}
+      <div class="cart-item-actions">
+        <button class="cart-delete-btn" onclick="removeAllItemsOfType('${item.id}')" title="Alle ${item.name} entfernen">
+          <i class="fas fa-trash"></i>
+        </button>
+        ${createCartControlsTemplate(item.id, item.quantity)}
+      </div>
     </div>
   `;
 }

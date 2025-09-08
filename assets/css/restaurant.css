@@ -115,12 +115,12 @@
 
 .cart-item-name {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-primary);
 }
 
 .cart-item-customizations {
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   margin: 0.25rem 0;
 }
@@ -130,7 +130,7 @@
 }
 
 .cart-item-price-line {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--text-secondary);
 }
 
@@ -149,7 +149,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -186,7 +186,7 @@
 }
 
 .cart-empty-subtitle {
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin: 0;
 }
 
@@ -289,7 +289,7 @@
 }
 
 .stat-label {
-  font-size: 0.9rem;
+  font-size: 1rem;
   opacity: 0.8;
 }
 
@@ -620,7 +620,7 @@
 }
 
 .cart-item-customizations {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   margin-bottom: 0.25rem;
 }
@@ -647,7 +647,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
@@ -731,7 +731,7 @@
   border-radius: 50%;
   width: 18px;
   height: 18px;
-  font-size: 0.75rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -745,12 +745,12 @@
 }
 
 .mobile-cart-label {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .mobile-cart-total {
-  font-size: 0.8rem;
+  font-size: 1rem;
   opacity: 0.9;
 }
 
@@ -1024,7 +1024,7 @@
 
   .menu-category-btn {
     padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .mobile-cart-button {
@@ -1036,7 +1036,7 @@
 @media (max-width: 320px) {
   .location-selector {
     padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .restaurant-hero-image {
@@ -1056,11 +1056,11 @@
   }
 
   .stat {
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
 
   .stat-label {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .menu-nav {
@@ -1073,7 +1073,7 @@
 
   .menu-category-btn {
     padding: 0.5rem 0.75rem;
-    font-size: 0.85rem;
+    font-size: 1rem;
     min-width: auto;
   }
 
@@ -1091,7 +1091,7 @@
   }
 
   .menu-item-description {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .menu-item-price {
@@ -1106,16 +1106,16 @@
   .mobile-cart-button {
     min-width: 160px;
     padding: 8px 12px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     bottom: 15px;
   }
 
   .mobile-cart-label {
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
 
   .mobile-cart-total {
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
 
   .mobile-cart-header,
@@ -1180,4 +1180,35 @@
   .checkout-success-details {
     padding: 15px;
   }
+}
+
+/* Cart Item Actions */
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-delete-btn {
+  background: var(--danger-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.cart-delete-btn:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+.cart-delete-btn:active {
+  transform: scale(0.95);
 }

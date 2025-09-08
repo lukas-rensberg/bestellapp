@@ -146,34 +146,6 @@ function updateModalPrice() {
 }
 
 /**
- * Adds configured item from modal to cart
- * @returns {void}
- */
-function addModalItemToCart() {
-  if (!modalItem) return;
-
-  const customizationNames = getCustomizationNames();
-  const customizationPrice = getCustomizationPrice();
-  const cartItem = createCartItemFromModal(
-    customizationNames,
-    customizationPrice
-  );
-
-  const existingItemIndex = cart.findIndex((item) =>
-    checkMatchingItems(cartItem, item)
-  );
-
-  if (existingItemIndex !== -1) {
-    cart[existingItemIndex].quantity += cartItem.quantity;
-  } else {
-    cart.push(cartItem);
-  }
-
-  updateCartCount();
-  closeItemModal();
-}
-
-/**
  * Gets formatted customization names
  * @returns {Array<string>} Array of customization names
  */

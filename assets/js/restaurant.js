@@ -180,7 +180,7 @@ function renderMenuSections(menu) {
  * @returns {string} HTML string for menu section
  */
 function createMenuSectionHTML(category, items) {
-  const priceText = `${item.price.toFixed(2).replace(".", ",")} €`;
+  const priceText = `${items.map((item) => item.price).reduce((sum, price) => sum + price, 0).toFixed(2).replace(".", ",")} €`;
   const fallbackImage =
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiNGOEZGOUZBIi8+PHBhdGggZD0iTTUwIDQwSDcwVjYwSDUwVjQwWiIgZmlsbD0iI0U5RUNFRiIvPjwvc3ZnPg==";
 
