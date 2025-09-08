@@ -15,6 +15,12 @@ function createRestaurantCardTemplate(restaurant) {
   `;
 }
 
+function createMenuCategoryButtonTemplate(category) {
+  return `<button class="menu-category-btn" data-category="${category}" onclick="scrollToCategory('${category}')">
+    ${category}
+  </button>`;
+}
+
 function createRestaurantHeaderTemplate(restaurant) {
   return `
     <div class="restaurant-header">

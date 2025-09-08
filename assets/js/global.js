@@ -53,6 +53,22 @@ function renderRestaurants(restaurantsToShow = restaurants) {
     .join("");
 }
 
+function filterRestaurants(category) {
+  currentFilter = category;
+
+  document.querySelectorAll(".filter-tab").forEach((tab) => {
+    tab.classList.remove("active");
+  });
+  document.querySelector(`[data-filter="${category}"]`).classList.add("active");
+
+  const filteredRestaurants =
+    category === "all"
+      ? restaurants
+      : restaurants.filter((restaurant) => restaurant.category === category);
+
+  renderRestaurants(filteredRestaurants);
+}
+
 function openRestaurantDetailsPage(restaurantId) {
   const restaurant = restaurants.find((r) => r.id === restaurantId);
   if (restaurant) {
