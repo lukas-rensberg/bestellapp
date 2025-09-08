@@ -765,38 +765,7 @@ function closeMobileCart() {
 document.addEventListener("DOMContentLoaded", function () {
   initRestaurantPage();
 
-  setTimeout(() => {
-    window.stop();
-  }, 100);
-
-  document
-    .getElementById("itemModalOverlay")
-    .addEventListener("click", function (e) {
-      if (e.target === this) {
-        closeItemModal();
-      }
-    });
-
-  document
-    .getElementById("mobileCartOverlay")
-    .addEventListener("click", function (e) {
-      if (e.target === this) {
-        closeMobileCart();
-      }
-    });
-
-  document
-    .getElementById("checkoutSuccessOverlay")
-    .addEventListener("click", function (e) {
-      if (e.target === this) {
-        closeCheckoutSuccess();
-      }
-    });
-
-  const cartStickyCheckout = document.getElementById("cartStickyCheckout");
-  if (cartStickyCheckout) {
-    cartStickyCheckout.addEventListener("click", processCheckout);
-  }
+  setTimeout(() => window.stop(), 100);
 });
 
 window.addEventListener("scroll", function () {
@@ -810,11 +779,7 @@ window.addEventListener("scroll", function () {
   });
 
   if (currentSection) {
-    categoryButtons.forEach((btn) => {
-      btn.classList.remove("active");
-      if (btn.dataset.category === currentSection) {
-        btn.classList.add("active");
-      }
-    });
+    categoryButtons.forEach((btn) => (btn.classList.remove("active")));
+    if (btn.dataset.category === currentSection) btn.classList.add("active");
   }
 });
