@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant - Bestellapp</title>
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/restaurant.css" />
+    <meta name="description" content="Restaurant Menü - Bestellapp" />
+    <link rel="stylesheet" href="assets/css/all.min.css" />
+  </head>
+  <body class="light-mode">
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <div class="header-left">
+          <a href="/index.html" class="logo-link">
+            <img
+              class="logo"
+              src="/assets/img/Logo.png"
+              alt="Bestellapp logo"
+            />
+          </a>
+        </div>
+
+        <div class="header-center">
+          <div class="location-selector">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Berlin, 10115</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button
+            class="toggle-theme"
+            onclick="toggleTheme()"
+            id="toggleTheme"
+            title="Design wechseln"
+          >
+            <i class="fa-regular fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Restaurant Hero -->
+    <section class="restaurant-hero">
+      <div class="restaurant-hero-image">
+        <img id="restaurantHeroImage" src="" alt="Restaurant" />
+        <div class="restaurant-hero-overlay">
+          <div class="container">
+            <button class="back-btn" onclick="goBack()">
+              <i class="fas fa-arrow-left"></i>
+              Zurück
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="restaurant-hero-info">
+        <div class="container">
+          <div class="restaurant-main-info">
+            <div class="restaurant-details">
+              <h1 id="restaurantName">Restaurant Name</h1>
+              <p id="restaurantCuisine">Küche</p>
+            </div>
+            <div class="restaurant-stats">
+              <div class="stat">
+                <i class="fas fa-star"></i>
+                <span id="restaurantRating">4.5</span>
+                <span class="stat-label">(120+ Bewertungen)</span>
+              </div>
+              <div class="stat">
+                <i class="fas fa-clock"></i>
+                <span id="restaurantDeliveryTime">25-40 min</span>
+              </div>
+              <div class="stat">
+                <i class="fas fa-euro-sign"></i>
+                <span id="restaurantDeliveryFee">€2.99</span>
+                <span class="stat-label">Lieferung</span>
+              </div>
+              <div class="stat">
+                <i class="fas fa-shopping-bag"></i>
+                <span id="restaurantMinOrder">€15.00</span>
+                <span class="stat-label">Mindestbestellwert</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Navigation -->
+    <nav class="menu-nav">
+      <div class="container">
+        <div class="menu-categories" id="menuCategories"></div>
+      </div>
+    </nav>
+
+    <!-- Menu Content -->
+    <main class="menu-main">
+      <div class="container">
+        <div class="menu-content">
+          <div class="menu-sections" id="menuSections"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Sticky Shopping Cart -->
+    <div class="cart-sticky" id="cartSticky">
+      <div class="cart-sticky-header">
+        <h3>Warenkorb (<span id="cartItemCount">0</span>)</h3>
+      </div>
+      <div class="cart-sticky-content">
+        <div class="cart-sticky-items" id="cartStickyItems"></div>
+        <div class="cart-sticky-footer">
+          <div class="cart-sticky-total">
+            <span>Gesamt:</span>
+            <span id="cartStickyTotal">0,00 €</span>
+          </div>
+          <button
+            class="cart-sticky-checkout"
+            id="cartStickyCheckout"
+            disabled
+            onclick="processCheckout()"
+          >
+            Zur Kasse
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item Modal -->
+    <div class="item-modal-overlay" id="itemModalOverlay">
+      <div class="item-modal" id="itemModal">
+        <button class="modal-close" onclick="closeItemModal()">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-content">
+          <img id="modalItemImage" src="" alt="Item" class="modal-item-image" />
+          <div class="modal-item-info">
+            <h3 id="modalItemName">Item Name</h3>
+            <p id="modalItemDescription">Item description</p>
+            <div class="modal-item-price" id="modalItemPrice">0,00 €</div>
+
+            <div class="modal-customization">
+              <h4>Anpassungen</h4>
+              <div id="modalCustomizations"></div>
+            </div>
+
+            <div class="modal-quantity">
+              <button class="quantity-btn" onclick="changeModalQuantity(-1)">
+                -
+              </button>
+              <span id="modalQuantity">1</span>
+              <button class="quantity-btn" onclick="changeModalQuantity(1)">
+                +
+              </button>
+            </div>
+
+            <button class="add-to-cart-btn" onclick="addModalItemToCart()">
+              In den Warenkorb - <span id="modalTotalPrice">0,00 €</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/db.js"></script>
+    <script src="assets/js/restaurant.js"></script>
+    <script src="assets/js/template.js"></script>
+    <script src="assets/js/all.min.js"></script>
+  </body>
+</html>
