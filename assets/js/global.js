@@ -66,8 +66,8 @@ function updateRestaurantCount(count) {
  */
 function renderRestaurants(restaurantsToShow = restaurants) {
   if (
-    window.location.pathname !== "/index.html" &&
-    window.location.pathname !== "/"
+    window.location.pathname !== "/bestellapp/" &&
+    window.location.pathname !== "/bestellapp/index.html"
   )
     return;
   const restaurantGrid = document.getElementById("restaurantGrid");
