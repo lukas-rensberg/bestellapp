@@ -251,7 +251,7 @@
 .restaurant-main-info {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: row;
   gap: 2rem;
 }
@@ -264,7 +264,6 @@
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
 }
 
 .restaurant-details p {
@@ -690,6 +689,273 @@
   margin-top: 0.5rem;
 }
 
+/* Mobile Cart Button */
+.mobile-cart-button {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-color);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: var(--shadow-hover);
+  z-index: 1001;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  justify-content: center;
+  border: none;
+  font-family: inherit;
+}
+
+.mobile-cart-button:hover {
+  background: var(--primary-dark);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.mobile-cart-icon {
+  position: relative;
+  font-size: 1.2rem;
+}
+
+.mobile-cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--danger-color);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.mobile-cart-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mobile-cart-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.mobile-cart-total {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+/* Mobile Cart Dialog */
+.mobile-cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-cart-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-cart-dialog {
+  background: var(--bg-color);
+  width: 100%;
+  max-height: 80vh;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+}
+
+.mobile-cart-overlay.open .mobile-cart-dialog {
+  transform: translateY(0);
+}
+
+.mobile-cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--surface-color);
+  border-radius: 20px 20px 0 0;
+}
+
+.mobile-cart-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+}
+
+.mobile-cart-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.mobile-cart-close:hover {
+  background: var(--border-color);
+}
+
+.mobile-cart-content {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.mobile-cart-items {
+  padding: 20px;
+}
+
+.mobile-cart-footer {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  background: var(--surface-color);
+}
+
+.mobile-cart-summary {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+}
+
+.mobile-cart-checkout {
+  width: 100%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-cart-checkout:hover {
+  background: var(--primary-dark);
+}
+
+.mobile-cart-checkout:disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* Checkout Success Modal */
+.checkout-success-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.checkout-success-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.checkout-success-modal {
+  background: var(--bg-color);
+  border-radius: 15px;
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 90vw;
+  text-align: center;
+  transform: scale(0.9);
+  transition: all 0.3s ease;
+}
+
+.checkout-success-overlay.open .checkout-success-modal {
+  transform: scale(1);
+}
+
+.checkout-success-icon {
+  font-size: 4rem;
+  color: var(--success-color);
+  margin-bottom: 20px;
+}
+
+.checkout-success-modal h3 {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.checkout-success-modal p {
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+
+.checkout-success-details {
+  background: var(--surface-color);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.checkout-detail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.checkout-detail:last-child {
+  margin-bottom: 0;
+}
+
+.checkout-success-btn {
+  width: 100%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkout-success-btn:hover {
+  background: var(--primary-dark);
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .restaurant-hero,
@@ -697,6 +963,29 @@
   .menu-main {
     margin-right: 0; /* Remove cart space on smaller screens */
   }
+
+  .cart-sticky {
+    display: none; /* Hide desktop cart on smaller screens */
+  }
+
+  .mobile-cart-button {
+    display: flex; /* Show mobile cart button */
+  }
+}
+
+/* Force mobile cart when restaurant name wraps */
+.restaurant-name-wrapped .cart-sticky {
+  display: none !important;
+}
+
+.restaurant-name-wrapped .mobile-cart-button {
+  display: flex !important;
+}
+
+.restaurant-name-wrapped .restaurant-hero,
+.restaurant-name-wrapped .menu-nav,
+.restaurant-name-wrapped .menu-main {
+  margin-right: 0 !important;
 }
 
 @media (max-width: 768px) {
@@ -706,11 +995,13 @@
 
   .restaurant-stats {
     gap: 1rem;
+    justify-content: center;
   }
 
   .menu-item {
     flex-direction: column;
     text-align: center;
+    padding: 0 0 1rem;
   }
 
   .menu-item-image {
@@ -749,5 +1040,159 @@
   .menu-category-btn {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
+  }
+
+  .mobile-cart-button {
+    min-width: 180px;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .location-selector {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .restaurant-hero-image {
+    height: 180px;
+  }
+
+  .restaurant-details h1 {
+    font-size: 1.5rem;
+  }
+
+  .restaurant-details p {
+    font-size: 1rem;
+  }
+
+  .restaurant-stats {
+    gap: 0.75rem;
+  }
+
+  .stat {
+    font-size: 0.85rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .menu-nav {
+    top: 70px;
+  }
+
+  .menu-categories {
+    padding: 0.75rem 0;
+  }
+
+  .menu-category-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    min-width: auto;
+  }
+
+  .menu-section-title {
+    font-size: 1.5rem;
+  }
+
+  .menu-item {
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .menu-item-name {
+    font-size: 1.1rem;
+  }
+
+  .menu-item-description {
+    font-size: 0.9rem;
+  }
+
+  .menu-item-price {
+    font-size: 1rem;
+  }
+
+  .menu-item-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobile-cart-button {
+    min-width: 160px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    bottom: 15px;
+  }
+
+  .mobile-cart-label {
+    font-size: 0.85rem;
+  }
+
+  .mobile-cart-total {
+    font-size: 0.75rem;
+  }
+
+  .mobile-cart-header,
+  .mobile-cart-footer,
+  .mobile-cart-items {
+    padding: 15px;
+  }
+
+  .mobile-cart-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .mobile-cart-summary {
+    font-size: 1rem;
+  }
+
+  .mobile-cart-checkout {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .item-modal {
+    width: 95vw;
+    max-height: 95vh;
+  }
+
+  .modal-item-info {
+    padding: 1.5rem;
+  }
+
+  .modal-item-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .modal-item-price {
+    font-size: 1.2rem;
+  }
+
+  .quantity-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
+  }
+
+  .add-to-cart-btn {
+    font-size: 1rem;
+    padding: 0.875rem;
+  }
+
+  .checkout-success-modal {
+    padding: 30px 20px;
+  }
+
+  .checkout-success-icon {
+    font-size: 3rem;
+  }
+
+  .checkout-success-modal h3 {
+    font-size: 1.3rem;
+  }
+
+  .checkout-success-details {
+    padding: 15px;
   }
 }
