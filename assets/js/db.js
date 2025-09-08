@@ -129,6 +129,16 @@ const menuData = {
           price: 9.5,
           image:
             "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Salami", price: 2.0, type: "add" },
+            { name: "Extra Käse", price: 1.5, type: "add" },
+            { name: "Salami", price: 0, type: "remove" },
+            { name: "Zwiebeln", price: 0.8, type: "add" },
+            { name: "Paprika", price: 1.0, type: "add" },
+            { name: "Scharfe Peperoni", price: 1.2, type: "add" },
+            { name: "Oliven", price: 1.0, type: "add" },
+            { name: "Pilze", price: 1.0, type: "add" },
+          ],
         },
       ],
       Pasta: [
@@ -139,6 +149,14 @@ const menuData = {
           price: 11.9,
           image:
             "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Speck", price: 2.0, type: "add" },
+            { name: "Extra Ei", price: 1.5, type: "add" },
+            { name: "Extra Parmesan", price: 1.5, type: "add" },
+            { name: "Speck", price: 0, type: "remove" },
+            { name: "Ei", price: 0, type: "remove" },
+            { name: "Parmesan", price: 0, type: "remove" },
+          ],
         },
       ],
       Salate: [
@@ -149,6 +167,14 @@ const menuData = {
           price: 7.5,
           image:
             "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Römersalat", price: 2.0, type: "add" },
+            { name: "Extra Parmesan", price: 1.5, type: "add" },
+            { name: "Extra Croutons", price: 1.5, type: "add" },
+            { name: "Römersalat", price: 0, type: "remove" },
+            { name: "Parmesan", price: 0, type: "remove" },
+            { name: "Croutons", price: 0, type: "remove" },
+          ],
         },
       ],
       Desserts: [
@@ -159,6 +185,14 @@ const menuData = {
           price: 4.5,
           image:
             "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Käse", price: 1.5, type: "add" },
+            { name: "Extra Kirschtomaten", price: 1.5, type: "add" },
+            { name: "Extra Sahne", price: 1.5, type: "add" },
+            { name: "Käse", price: 0, type: "remove" },
+            { name: "Kirschtomaten", price: 0, type: "remove" },
+            { name: "Sahne", price: 0, type: "remove" },
+          ],
         },
       ],
     },
@@ -174,6 +208,16 @@ const menuData = {
           price: 8.9,
           image:
             "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Rindfleisch", price: 2.0, type: "add" },
+            { name: "Extra Salat", price: 1.5, type: "add" },
+            { name: "Extra Tomate", price: 1.5, type: "add" },
+            { name: "Extra Zwiebeln", price: 1.5, type: "add" },
+            { name: "Rindfleisch", price: 0, type: "remove" },
+            { name: "Salat", price: 0, type: "remove" },
+            { name: "Tomate", price: 0, type: "remove" },
+            { name: "Zwiebeln", price: 0, type: "remove" },
+          ],
         },
       ],
       Beilagen: [
@@ -184,6 +228,14 @@ const menuData = {
           price: 3.5,
           image:
             "https://images.unsplash.com/photo-1576107232684-1279f390b5d7?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Große Portion", price: 1.5, type: "add" },
+            { name: "Süßkartoffelpommes", price: 2.0, type: "add" },
+            { name: "Ketchup", price: 0.5, type: "add" },
+            { name: "Mayo", price: 0.5, type: "add" },
+            { name: "BBQ Sauce", price: 0.7, type: "add" },
+            { name: "Salz", price: 0, type: "remove" },
+          ],
         },
       ],
       Getränke: [
@@ -194,6 +246,10 @@ const menuData = {
           price: 2.5,
           image:
             "https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "0,5l Flasche", price: 1.0, type: "add" },
+            { name: "Cola Zero", price: 0, type: "add" },
+          ],
         },
       ],
     },
@@ -209,6 +265,14 @@ const menuData = {
           price: 4.5,
           image:
             "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "4 Stück", price: 4.0, type: "add" },
+            { name: "Extra Wasabi", price: 0.5, type: "add" },
+            { name: "Reis", price: -1.0, type: "remove" },
+            { name: "Sesam", price: 0.3, type: "add" },
+            { name: "Ingwer", price: 0.5, type: "add" },
+            { name: "Lachs", price: 0, type: "remove" },
+          ],
         },
         {
           id: 10,
@@ -217,6 +281,10 @@ const menuData = {
           price: 5.5,
           image:
             "https://images.unsplash.com/photo-1553621042-f6e147245754?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Thunfisch", price: 2.0, type: "add" },
+            { name: "Thunfisch", price: 0, type: "remove" },
+          ],
         },
         {
           id: 11,
@@ -225,6 +293,10 @@ const menuData = {
           price: 4.0,
           image:
             "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Garnele", price: 2.0, type: "add" },
+            { name: "Garnele", price: 0, type: "remove" },
+          ],
         },
       ],
       Maki: [
@@ -235,6 +307,14 @@ const menuData = {
           price: 7.5,
           image:
             "https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Surimi", price: 2.0, type: "add" },
+            { name: "Surimi", price: 0, type: "remove" },
+            { name: "Extra Avocado", price: 2.0, type: "add" },
+            { name: "Avocado", price: 0, type: "remove" },
+            { name: "Extra Gurke", price: 2.0, type: "add" },
+            { name: "Gurke", price: 0, type: "remove" },
+          ],
         },
         {
           id: 13,
@@ -243,6 +323,14 @@ const menuData = {
           price: 8.9,
           image:
             "https://images.unsplash.com/photo-1617196034183-421b4917abd8?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Lachs", price: 2.0, type: "add" },
+            { name: "Lachs", price: 0, type: "remove" },
+            { name: "Extra Frischkäse", price: 2.0, type: "add" },
+            { name: "Frischkäse", price: 0, type: "remove" },
+            { name: "Extra Gurke", price: 2.0, type: "add" },
+            { name: "Gurke", price: 0, type: "remove" },
+          ],
         },
         {
           id: 14,
@@ -251,24 +339,38 @@ const menuData = {
           price: 9.5,
           image:
             "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Thunfisch", price: 2.0, type: "add" },
+            { name: "Thunfisch", price: 0, type: "remove" },
+            { name: "Extra Gurke", price: 2.0, type: "add" },
+            { name: "Gurke", price: 0, type: "remove" },
+          ],
         },
       ],
       Sashimi: [
         {
           id: 15,
           name: "Lachs Sashimi",
-          description: "6 Stück frischer Lachs ohne Reis",
+          description: "6 Stück frischer Lachs Reis",
           price: 12.9,
           image:
             "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Lachs", price: 2.0, type: "add" },
+            { name: "Lachs", price: 0, type: "remove" },
+          ],
         },
         {
           id: 16,
           name: "Thunfisch Sashimi",
-          description: "6 Stück frischer Thunfisch ohne Reis",
+          description: "6 Stück frischer Thunfisch Reis",
           price: 14.9,
           image:
             "https://images.unsplash.com/photo-1553621042-f6e147245754?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Thunfisch", price: 2.0, type: "add" },
+            { name: "Thunfisch", price: 0, type: "remove" },
+          ],
         },
       ],
       "Warme Gerichte": [
@@ -279,6 +381,12 @@ const menuData = {
           price: 11.5,
           image:
             "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Hähnchen", price: 2.0, type: "add" },
+            { name: "Hähnchen", price: 0, type: "remove" },
+            { name: "Extra Reis", price: 2.0, type: "add" },
+            { name: "Reis", price: 0, type: "remove" },
+          ],
         },
         {
           id: 18,
@@ -287,6 +395,10 @@ const menuData = {
           price: 3.5,
           image:
             "https://images.unsplash.com/photo-1591814468924-caf88d1232e1?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Suppe", price: 2.0, type: "add" },
+            { name: "Suppe", price: 0, type: "remove" },
+          ],
         },
       ],
       Getränke: [
@@ -297,6 +409,10 @@ const menuData = {
           price: 8.9,
           image:
             "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Sake", price: 2.0, type: "add" },
+            { name: "Sake", price: 0, type: "remove" },
+          ],
         },
         {
           id: 20,
@@ -305,6 +421,10 @@ const menuData = {
           price: 2.5,
           image:
             "https://images.unsplash.com/photo-1556881286-fc6915169721?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Tee", price: 2.0, type: "add" },
+            { name: "Tee", price: 0, type: "remove" },
+          ],
         },
       ],
     },
@@ -320,6 +440,10 @@ const menuData = {
           price: 9.5,
           image:
             "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Penne", price: 2.0, type: "add" },
+            { name: "Penne", price: 0, type: "remove" },
+          ],
         },
         {
           id: 22,
@@ -328,6 +452,10 @@ const menuData = {
           price: 13.9,
           image:
             "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Linguine", price: 2.0, type: "add" },
+            { name: "Linguine", price: 0, type: "remove" },
+          ],
         },
         {
           id: 23,
@@ -336,6 +464,10 @@ const menuData = {
           price: 11.5,
           image:
             "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Fettuccine", price: 2.0, type: "add" },
+            { name: "Fettuccine", price: 0, type: "remove" },
+          ],
         },
         {
           id: 24,
@@ -344,6 +476,10 @@ const menuData = {
           price: 10.9,
           image:
             "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Spaghetti", price: 2.0, type: "add" },
+            { name: "Spaghetti", price: 0, type: "remove" },
+          ],
         },
       ],
       Risotto: [
@@ -354,6 +490,10 @@ const menuData = {
           price: 12.5,
           image:
             "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Risotto", price: 2.0, type: "add" },
+            { name: "Risotto", price: 0, type: "remove" },
+          ],
         },
         {
           id: 26,
@@ -362,6 +502,10 @@ const menuData = {
           price: 15.9,
           image:
             "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Risotto", price: 2.0, type: "add" },
+            { name: "Risotto", price: 0, type: "remove" },
+          ],
         },
       ],
       Antipasti: [
@@ -372,6 +516,10 @@ const menuData = {
           price: 6.5,
           image:
             "https://images.unsplash.com/photo-1572441713132-51c75654db73?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Bruschetta", price: 2.0, type: "add" },
+            { name: "Bruschetta", price: 0, type: "remove" },
+          ],
         },
         {
           id: 28,
@@ -380,6 +528,10 @@ const menuData = {
           price: 12.9,
           image:
             "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Antipasti Misti", price: 2.0, type: "add" },
+            { name: "Antipasti Misti", price: 0, type: "remove" },
+          ],
         },
       ],
       Desserts: [
@@ -390,6 +542,10 @@ const menuData = {
           price: 5.5,
           image:
             "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Panna Cotta", price: 2.0, type: "add" },
+            { name: "Panna Cotta", price: 0, type: "remove" },
+          ],
         },
         {
           id: 30,
@@ -398,6 +554,10 @@ const menuData = {
           price: 4.9,
           image:
             "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Cannoli Siciliani", price: 2.0, type: "add" },
+            { name: "Cannoli Siciliani", price: 0, type: "remove" },
+          ],
         },
       ],
       Getränke: [
@@ -408,6 +568,10 @@ const menuData = {
           price: 18.9,
           image:
             "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Chianti 0,75l", price: 2.0, type: "add" },
+            { name: "Chianti 0,75l", price: 0, type: "remove" },
+          ],
         },
         {
           id: 32,
@@ -416,6 +580,10 @@ const menuData = {
           price: 2.2,
           image:
             "https://images.unsplash.com/photo-1610889556528-9a770e32642f?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Espresso", price: 2.0, type: "add" },
+            { name: "Espresso", price: 0, type: "remove" },
+          ],
         },
       ],
     },
@@ -437,6 +605,10 @@ const menuData = {
           price: 16.9,
           image:
             "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Peking Ente", price: 2.0, type: "add" },
+            { name: "Peking Ente", price: 0, type: "remove" },
+          ],
         },
         {
           id: 34,
@@ -445,6 +617,14 @@ const menuData = {
           price: 12.5,
           image:
             "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=300&h=200&fit=crop",
+          customizations: [
+            {
+              name: "Extra Süß-Saures Schweinefleisch",
+              price: 2.0,
+              type: "add",
+            },
+            { name: "Süß-Saures Schweinefleisch", price: 0, type: "remove" },
+          ],
         },
         {
           id: 35,
@@ -453,6 +633,10 @@ const menuData = {
           price: 11.9,
           image:
             "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Kung Pao Hähnchen", price: 2.0, type: "add" },
+            { name: "Kung Pao Hähnchen", price: 0, type: "remove" },
+          ],
         },
         {
           id: 36,
@@ -461,6 +645,10 @@ const menuData = {
           price: 10.5,
           image:
             "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Mapo Tofu", price: 2.0, type: "add" },
+            { name: "Mapo Tofu", price: 0, type: "remove" },
+          ],
         },
       ],
       Suppen: [
@@ -471,6 +659,10 @@ const menuData = {
           price: 6.5,
           image:
             "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Wan Tan Suppe", price: 2.0, type: "add" },
+            { name: "Wan Tan Suppe", price: 0, type: "remove" },
+          ],
         },
         {
           id: 38,
@@ -479,6 +671,10 @@ const menuData = {
           price: 5.9,
           image:
             "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Heiß-Saure Suppe", price: 2.0, type: "add" },
+            { name: "Heiß-Saure Suppe", price: 0, type: "remove" },
+          ],
         },
       ],
       Vorspeisen: [
@@ -489,6 +685,14 @@ const menuData = {
           price: 5.5,
           image:
             "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=300&h=200&fit=crop",
+          customizations: [
+            {
+              name: "Extra Frühlingsrollen (4 Stück)",
+              price: 2.0,
+              type: "add",
+            },
+            { name: "Frühlingsrollen (4 Stück)", price: 0, type: "remove" },
+          ],
         },
         {
           id: 40,
@@ -497,6 +701,10 @@ const menuData = {
           price: 6.9,
           image:
             "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Gyoza (6 Stück)", price: 2.0, type: "add" },
+            { name: "Gyoza (6 Stück)", price: 0, type: "remove" },
+          ],
         },
       ],
       "Reis & Nudeln": [
@@ -507,6 +715,10 @@ const menuData = {
           price: 7.5,
           image:
             "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Gebratener Reis mit Ei", price: 2.0, type: "add" },
+            { name: "Gebratener Reis mit Ei", price: 0, type: "remove" },
+          ],
         },
         {
           id: 42,
@@ -515,6 +727,10 @@ const menuData = {
           price: 8.9,
           image:
             "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Lo Mein Nudeln", price: 2.0, type: "add" },
+            { name: "Lo Mein Nudeln", price: 0, type: "remove" },
+          ],
         },
       ],
       Getränke: [
@@ -548,6 +764,14 @@ const menuData = {
           price: 8.5,
           image:
             "https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=300&h=200&fit=crop",
+          customizations: [
+            {
+              name: "Extra Tacos al Pastor (3 Stück)",
+              price: 2.0,
+              type: "add",
+            },
+            { name: "Tacos al Pastor (3 Stück)", price: 0, type: "remove" },
+          ],
         },
         {
           id: 46,
@@ -556,6 +780,14 @@ const menuData = {
           price: 9.0,
           image:
             "https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=300&h=200&fit=crop",
+          customizations: [
+            {
+              name: "Extra Tacos de Carnitas (3 Stück)",
+              price: 2.0,
+              type: "add",
+            },
+            { name: "Tacos de Carnitas (3 Stück)", price: 0, type: "remove" },
+          ],
         },
         {
           id: 47,
@@ -564,6 +796,10 @@ const menuData = {
           price: 7.5,
           image:
             "https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Tacos de Pollo (3 Stück)", price: 2.0, type: "add" },
+            { name: "Tacos de Pollo (3 Stück)", price: 0, type: "remove" },
+          ],
         },
         {
           id: 48,
@@ -572,6 +808,10 @@ const menuData = {
           price: 10.5,
           image:
             "https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Fish Tacos (3 Stück)", price: 2.0, type: "add" },
+            { name: "Fish Tacos (3 Stück)", price: 0, type: "remove" },
+          ],
         },
       ],
       Burritos: [
@@ -582,6 +822,10 @@ const menuData = {
           price: 11.9,
           image:
             "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Burrito Grande", price: 2.0, type: "add" },
+            { name: "Burrito Grande", price: 0, type: "remove" },
+          ],
         },
         {
           id: 50,
@@ -590,6 +834,10 @@ const menuData = {
           price: 10.5,
           image:
             "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Chicken Burrito", price: 2.0, type: "add" },
+            { name: "Chicken Burrito", price: 0, type: "remove" },
+          ],
         },
         {
           id: 51,
@@ -598,6 +846,10 @@ const menuData = {
           price: 9.5,
           image:
             "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Veggie Burrito", price: 2.0, type: "add" },
+            { name: "Veggie Burrito", price: 0, type: "remove" },
+          ],
         },
       ],
       Quesadillas: [
@@ -608,6 +860,13 @@ const menuData = {
           price: 6.5,
           image:
             "https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Käse", price: 1.5, type: "add" },
+            { name: "Jalapeños", price: 0.8, type: "add" },
+            { name: "Sauerrahm", price: 0.7, type: "add" },
+            { name: "Guacamole", price: 1.2, type: "add" },
+            { name: "Käse", price: 0, type: "remove" },
+          ],
         },
         {
           id: 53,
@@ -616,6 +875,15 @@ const menuData = {
           price: 8.5,
           image:
             "https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Hähnchen", price: 2.5, type: "add" },
+            { name: "Extra Käse", price: 1.5, type: "add" },
+            { name: "Jalapeños", price: 0.8, type: "add" },
+            { name: "Sauerrahm", price: 0.7, type: "add" },
+            { name: "Guacamole", price: 1.2, type: "add" },
+            { name: "Hähnchen", price: 0, type: "remove" },
+            { name: "Käse", price: 0, type: "remove" },
+          ],
         },
       ],
       Nachos: [
@@ -626,6 +894,15 @@ const menuData = {
           price: 9.5,
           image:
             "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Käse", price: 1.5, type: "add" },
+            { name: "Extra Jalapeños", price: 0.8, type: "add" },
+            { name: "Extra Sauerrahm", price: 0.7, type: "add" },
+            { name: "Guacamole", price: 1.2, type: "add" },
+            { name: "Salsa", price: 0.8, type: "add" },
+            { name: "Jalapeños", price: 0, type: "remove" },
+            { name: "Sauerrahm", price: 0, type: "remove" },
+          ],
         },
         {
           id: 55,
@@ -634,6 +911,16 @@ const menuData = {
           price: 12.5,
           image:
             "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Rindfleisch", price: 2.5, type: "add" },
+            { name: "Extra Bohnen", price: 1.0, type: "add" },
+            { name: "Extra Käse", price: 1.5, type: "add" },
+            { name: "Extra Guacamole", price: 1.2, type: "add" },
+            { name: "Jalapeños", price: 0.8, type: "add" },
+            { name: "Sauerrahm", price: 0.7, type: "add" },
+            { name: "Rindfleisch", price: 0, type: "remove" },
+            { name: "Bohnen", price: 0, type: "remove" },
+          ],
         },
       ],
       Getränke: [
@@ -667,6 +954,14 @@ const menuData = {
           price: 13.5,
           image:
             "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Hähnchen", price: 3.0, type: "add" },
+            { name: "Scharf", price: 0, type: "add" },
+            { name: "Mild", price: 0, type: "add" },
+            { name: "Basmatireis", price: 2.5, type: "add" },
+            { name: "Naan Brot", price: 3.0, type: "add" },
+            { name: "Sauce", price: 0, type: "remove" },
+          ],
         },
         {
           id: 59,
@@ -675,6 +970,14 @@ const menuData = {
           price: 15.9,
           image:
             "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Lamm", price: 4.0, type: "add" },
+            { name: "Weniger scharf", price: 0, type: "add" },
+            { name: "Extra scharf", price: 0, type: "add" },
+            { name: "Basmatireis", price: 2.5, type: "add" },
+            { name: "Naan Brot", price: 3.0, type: "add" },
+            { name: "Kartoffeln", price: 0, type: "remove" },
+          ],
         },
         {
           id: 60,
@@ -683,6 +986,14 @@ const menuData = {
           price: 11.5,
           image:
             "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Paneer", price: 2.5, type: "add" },
+            { name: "Extra Spinat", price: 1.5, type: "add" },
+            { name: "Basmatireis", price: 2.5, type: "add" },
+            { name: "Naan Brot", price: 3.0, type: "add" },
+            { name: "Paneer", price: 0, type: "remove" },
+            { name: "Vegan (Paneer)", price: 0, type: "remove" },
+          ],
         },
         {
           id: 61,
@@ -691,6 +1002,13 @@ const menuData = {
           price: 10.5,
           image:
             "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Portion", price: 2.0, type: "add" },
+            { name: "Basmatireis", price: 2.5, type: "add" },
+            { name: "Naan Brot", price: 3.0, type: "add" },
+            { name: "Vegan (Sahne)", price: 0, type: "remove" },
+            { name: "Extra cremig", price: 1.0, type: "add" },
+          ],
         },
       ],
       Tandoor: [
@@ -701,6 +1019,13 @@ const menuData = {
           price: 14.9,
           image:
             "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Halbes Hähnchen", price: 3.0, type: "add" },
+            { name: "Basmatireis", price: 2.5, type: "add" },
+            { name: "Naan Brot", price: 3.0, type: "add" },
+            { name: "Minz-Chutney", price: 0.8, type: "add" },
+            { name: "Weniger scharf", price: 0, type: "add" },
+          ],
         },
         {
           id: 63,
@@ -709,6 +1034,13 @@ const menuData = {
           price: 13.5,
           image:
             "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Spieß", price: 4.0, type: "add" },
+            { name: "Basmatireis", price: 2.5, type: "add" },
+            { name: "Naan Brot", price: 3.0, type: "add" },
+            { name: "Zwiebel-Chutney", price: 0.8, type: "add" },
+            { name: "Weniger scharf", price: 0, type: "add" },
+          ],
         },
         {
           id: 64,
@@ -717,6 +1049,13 @@ const menuData = {
           price: 3.5,
           image:
             "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Knoblauch Naan", price: 1.0, type: "add" },
+            { name: "Käse Naan", price: 1.5, type: "add" },
+            { name: "Butter Naan", price: 0.8, type: "add" },
+            { name: "2 Stück", price: 3.0, type: "add" },
+            { name: "Butter", price: 0, type: "remove" },
+          ],
         },
       ],
       Biryani: [
@@ -727,6 +1066,13 @@ const menuData = {
           price: 12.9,
           image:
             "https://images.unsplash.com/photo-1563379091339-03246963d999?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Hähnchen", price: 3.0, type: "add" },
+            { name: "Extra Reis", price: 2.0, type: "add" },
+            { name: "Raita (Joghurt-Sauce)", price: 1.5, type: "add" },
+            { name: "Zwiebeln", price: 0, type: "remove" },
+            { name: "Weniger scharf", price: 0, type: "add" },
+          ],
         },
         {
           id: 66,
@@ -735,6 +1081,13 @@ const menuData = {
           price: 15.5,
           image:
             "https://images.unsplash.com/photo-1563379091339-03246963d999?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Lamm", price: 4.0, type: "add" },
+            { name: "Extra Reis", price: 2.0, type: "add" },
+            { name: "Raita (Joghurt-Sauce)", price: 1.5, type: "add" },
+            { name: "Zwiebeln", price: 0, type: "remove" },
+            { name: "Weniger scharf", price: 0, type: "add" },
+          ],
         },
       ],
       Vorspeisen: [
@@ -745,6 +1098,13 @@ const menuData = {
           price: 5.5,
           image:
             "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "6 Stück", price: 2.5, type: "add" },
+            { name: "Fleisch-Füllung", price: 1.5, type: "add" },
+            { name: "Minz-Chutney", price: 0.8, type: "add" },
+            { name: "Tamarind-Sauce", price: 0.8, type: "add" },
+            { name: "Kartoffeln", price: 0, type: "remove" },
+          ],
         },
         {
           id: 68,
@@ -753,6 +1113,12 @@ const menuData = {
           price: 4.9,
           image:
             "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Portion", price: 2.0, type: "add" },
+            { name: "Minz-Chutney", price: 0.8, type: "add" },
+            { name: "Weniger scharf", price: 0, type: "add" },
+            { name: "Extra knusprig", price: 0.5, type: "add" },
+          ],
         },
       ],
       Getränke: [
@@ -763,6 +1129,12 @@ const menuData = {
           price: 3.5,
           image:
             "https://images.unsplash.com/photo-1553909489-cd47e0ef937f?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Große Portion", price: 1.5, type: "add" },
+            { name: "Salzig", price: 0, type: "add" },
+            { name: "Extra Mango", price: 1.0, type: "add" },
+            { name: "Zucker", price: 0, type: "remove" },
+          ],
         },
         {
           id: 70,
@@ -771,6 +1143,12 @@ const menuData = {
           price: 2.8,
           image:
             "https://images.unsplash.com/photo-1556881286-fc6915169721?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Große Tasse", price: 1.0, type: "add" },
+            { name: "Extra Gewürze", price: 0.5, type: "add" },
+            { name: "Milch", price: 0, type: "remove" },
+            { name: "Zucker", price: 0, type: "remove" },
+          ],
         },
       ],
     },
@@ -786,6 +1164,13 @@ const menuData = {
           price: 13.9,
           image:
             "https://images.unsplash.com/photo-1498579397066-22750a3cb424?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Hackfleisch", price: 2.5, type: "add" },
+            { name: "Vegetarisch", price: 0, type: "remove" },
+            { name: "Extra Käse", price: 1.5, type: "add" },
+            { name: "Griechischer Salat", price: 3.0, type: "add" },
+            { name: "Pita Brot", price: 2.0, type: "add" },
+          ],
         },
         {
           id: 72,
@@ -794,6 +1179,14 @@ const menuData = {
           price: 11.5,
           image:
             "https://images.unsplash.com/photo-1498579397066-22750a3cb424?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Gyros", price: 3.0, type: "add" },
+            { name: "Hähnchen statt Schwein", price: 0, type: "add" },
+            { name: "Extra Tzatziki", price: 1.0, type: "add" },
+            { name: "Pommes", price: 2.5, type: "add" },
+            { name: "Pita Brot", price: 2.0, type: "add" },
+            { name: "Zwiebeln", price: 0, type: "remove" },
+          ],
         },
         {
           id: 73,
@@ -802,6 +1195,13 @@ const menuData = {
           price: 12.9,
           image:
             "https://images.unsplash.com/photo-1498579397066-22750a3cb424?w=300&h=200&fit=crop",
+          customizations: [
+            { name: "Extra Spieß", price: 3.5, type: "add" },
+            { name: "Hähnchen statt Schwein", price: 0, type: "add" },
+            { name: "Tzatziki", price: 1.0, type: "add" },
+            { name: "Pommes", price: 2.5, type: "add" },
+            { name: "Extra Pita", price: 2.0, type: "add" },
+          ],
         },
         {
           id: 74,
