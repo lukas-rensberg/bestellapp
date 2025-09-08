@@ -1,3 +1,14 @@
+/**
+ * @fileoverview Template functions for generating HTML components
+ * @author Bestellapp
+ * @version 1.0.0
+ */
+
+/**
+ * Creates HTML template for restaurant card
+ * @param {Object} restaurant - Restaurant data object
+ * @returns {string} HTML string for restaurant card
+ */
 function createRestaurantCardTemplate(restaurant) {
   return `
     <div class="restaurant-card" onclick="openRestaurantDetailsPage(${
@@ -15,12 +26,22 @@ function createRestaurantCardTemplate(restaurant) {
   `;
 }
 
+/**
+ * Creates HTML template for menu category button
+ * @param {string} category - Category name
+ * @returns {string} HTML string for category button
+ */
 function createMenuCategoryButtonTemplate(category) {
   return `<button class="menu-category-btn" data-category="${category}" onclick="scrollToCategory('${category}')">
     ${category}
   </button>`;
 }
 
+/**
+ * Creates HTML template for restaurant header with name and rating
+ * @param {Object} restaurant - Restaurant data object
+ * @returns {string} HTML string for restaurant header
+ */
 function createRestaurantHeaderTemplate(restaurant) {
   return `
     <div class="restaurant-header">
@@ -30,6 +51,11 @@ function createRestaurantHeaderTemplate(restaurant) {
   `;
 }
 
+/**
+ * Creates HTML template for restaurant delivery details
+ * @param {Object} restaurant - Restaurant data object
+ * @returns {string} HTML string for restaurant details
+ */
 function createRestaurantDetailsTemplate(restaurant) {
   const deliveryText =
     restaurant.deliveryFee === 0
@@ -44,6 +70,11 @@ function createRestaurantDetailsTemplate(restaurant) {
   `;
 }
 
+/**
+ * Creates HTML template for customizations list
+ * @param {Array<string>} customizations - Array of customization names
+ * @returns {string} HTML string for customizations list
+ */
 function createCustomizationsListTemplate(customizations) {
   if (!customizations || customizations.length === 0) return "";
 
@@ -57,6 +88,11 @@ function createCustomizationsListTemplate(customizations) {
   return `<div class="cart-item-customizations">${customItems}</div>`;
 }
 
+/**
+ * Creates HTML template for cart item
+ * @param {Object} item - Cart item object
+ * @returns {string} HTML string for cart item
+ */
 function createCartItemTemplate(item) {
   const customizationsList = createCustomizationsListTemplate(
     item.customizations
@@ -77,6 +113,10 @@ function createCartItemTemplate(item) {
   `;
 }
 
+/**
+ * Creates HTML template for empty cart state
+ * @returns {string} HTML string for empty cart state
+ */
 function createEmptyCartStateTemplate() {
   return `
       <div class="cart-empty-state">
@@ -86,6 +126,12 @@ function createEmptyCartStateTemplate() {
       </div>`;
 }
 
+/**
+ * Creates HTML template for cart item controls
+ * @param {string} itemId - Unique item identifier
+ * @param {number} quantity - Item quantity
+ * @returns {string} HTML string for cart controls
+ */
 function createCartControlsTemplate(itemId, quantity) {
   return `
     <div class="cart-item-controls">
@@ -96,6 +142,12 @@ function createCartControlsTemplate(itemId, quantity) {
   `;
 }
 
+/**
+ * Creates HTML template for menu item
+ * @param {Object} item - Menu item object
+ * @param {string} category - Item category
+ * @returns {string} HTML string for menu item
+ */
 function createMenuItemTemplate(item, category) {
   const priceText = `${item.price.toFixed(2).replace(".", ",")} €`;
   const fallbackImage =

@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Database containing restaurant and menu data for the ordering app
+ * @author Lukas Rensberg
+ * @version 1.0.0
+ */
+
 const restaurants = [
   {
     id: 1,

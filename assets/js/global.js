@@ -1,8 +1,19 @@
+/**
+ * @fileoverview Global functionality for theme management and startpage functionality
+ * @author Lukas Rensberg
+ * @version 1.0.0
+ */
+
+/** @type {Object} FontAwesome configuration */
 window.FontAwesomeConfig = {
   autoReplaceSvg: true,
   autoAddCss: true,
 };
 
+/**
+ * Toggles between light and dark theme
+ * @returns {void}
+ */
 function toggleTheme() {
   const toggleTheme = document.getElementById("toggleTheme");
 
@@ -19,6 +30,10 @@ function toggleTheme() {
   }
 }
 
+/**
+ * Applies previously saved theme from localStorage
+ * @returns {void}
+ */
 function changeToSavedTheme() {
   const savedTheme = localStorage.getItem("theme") || "light";
   const toggleTheme = document.getElementById("toggleTheme");
@@ -33,12 +48,22 @@ function changeToSavedTheme() {
   }
 }
 
+/**
+ * Updates restaurant count display text
+ * @param {number} count - Number of restaurants to display
+ * @returns {void}
+ */
 function updateRestaurantCount(count) {
   const restaurantCount = document.querySelector(".restaurant-count");
   const text = `${count} Restaurant${count !== 1 ? "s" : ""} verfügbar`;
   restaurantCount.textContent = text;
 }
 
+/**
+ * Renders restaurant cards on the main page
+ * @param {Array<Object>} restaurantsToShow - Array of restaurants to display
+ * @returns {void}
+ */
 function renderRestaurants(restaurantsToShow = restaurants) {
   if (
     window.location.pathname !== "/index.html" &&
@@ -53,6 +78,11 @@ function renderRestaurants(restaurantsToShow = restaurants) {
     .join("");
 }
 
+/**
+ * Filters restaurants by category and updates display
+ * @param {string} category - Category to filter by ('all' for no filter)
+ * @returns {void}
+ */
 function filterRestaurants(category) {
   currentFilter = category;
 
@@ -69,6 +99,11 @@ function filterRestaurants(category) {
   renderRestaurants(filteredRestaurants);
 }
 
+/**
+ * Navigates to restaurant details page
+ * @param {number} restaurantId - ID of restaurant to view
+ * @returns {void}
+ */
 function openRestaurantDetailsPage(restaurantId) {
   const restaurant = restaurants.find((r) => r.id === restaurantId);
   if (restaurant) {
