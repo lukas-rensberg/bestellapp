@@ -63,7 +63,7 @@ header {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 20px;
+  padding: 0;
 }
 
 .header-container {
@@ -176,7 +176,7 @@ header {
   margin-bottom: 1rem;
 }
 
-.restaurant-details {
+.restaurant-details-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -202,4 +202,36 @@ footer {
   padding: 1rem 0rem;
   width: 100%;
   flex: 1;
+}
+@media (max-width: 1630px) {
+  .container {
+    padding: 0rem 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .header-container {
+    padding: 0.75rem 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toggle-theme {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 1rem 10px;
+  }
+
+  .header-container {
+    padding: 0.75rem 10px;
+  }
+
+  .header-left .logo {
+    height: 40px;
+  }
 }
