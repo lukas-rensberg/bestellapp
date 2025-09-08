@@ -65,16 +65,17 @@ function updateRestaurantCount(count) {
  * @returns {void}
  */
 function renderRestaurants(restaurantsToShow = restaurants) {
-  if (
-    window.location.pathname !== "/bestellapp/" &&
-    window.location.pathname !== "/bestellapp/index.html"
-  )
-    return;
+  if (window.location.pathname !== "/bestellapp/" && window.location.pathname !== "/bestellapp/index.html") return;
   const restaurantGrid = document.getElementById("restaurantGrid");
-
   updateRestaurantCount(restaurantsToShow.length);
+  
   restaurantGrid.innerHTML = restaurantsToShow
-    .map((restaurant) => createRestaurantCardTemplate(restaurant))
+    .map((restaurant) => {
+      const deliveryText = restaurant.deliveryFee === 0
+        ? "Kostenlose Lieferung"
+        : `${restaurant.deliveryFee.toFixed(2).replace(".", ",")} € Lieferung`;
+      return createRestaurantCardTemplate(restaurant, deliveryText);
+    })
     .join("");
 }
 

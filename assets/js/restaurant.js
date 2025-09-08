@@ -8,7 +8,6 @@ let currentRestaurant = null;
 let modalItem = null;
 let modalQuantity = 1;
 let modalCustomizations = [];
-let cart = [];
 
 /**
  * Gets restaurant ID from URL parameters
@@ -139,7 +138,6 @@ function setRestaurantHeroImage(image) {
  */
 function generateMenuCategories(menu) {
   const categoriesContainer = document.getElementById("menuCategories");
-  console.log(menu.categories);
   categoriesContainer.innerHTML = menu.categories
     .map((category) => createMenuCategoryButtonTemplate(category))
     .join("");
@@ -158,22 +156,9 @@ function generateMenuCategories(menu) {
  */
 function loadMenu(restaurantId) {
   const menu = menuData[restaurantId];
-  if (!menu) {
-    showMenuLoadingState();
-    return;
-  }
 
   generateMenuCategories(menu);
   renderMenuSections(menu);
-}
-
-/**
- * Shows loading state when menu data is unavailable
- * @returns {void}
- */
-function showMenuLoadingState() {
-  document.getElementById("menuSections").innerHTML =
-    "<p>Menü wird geladen...</p>";
 }
 
 /**
@@ -195,15 +180,17 @@ function renderMenuSections(menu) {
  * @returns {string} HTML string for menu section
  */
 function createMenuSectionHTML(category, items) {
+  const priceText = `${item.price.toFixed(2).replace(".", ",")} €`;
+  const fallbackImage =
+    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiNGOEZGOUZBIi8+PHBhdGggZD0iTTUwIDQwSDcwVjYwSDUwVjQwWiIgZmlsbD0iI0U5RUNFRiIvPjwvc3ZnPg==";
+
   const itemsHTML = (items || [])
-    .map((item) => createMenuItemTemplate(item, category))
+    .map((item) =>
+      createMenuItemTemplate(item, category, priceText, fallbackImage)
+    )
     .join("");
 
-  return `
-    <div class="menu-section" id="section-${category}">
-      <h2 class="menu-section-title">${category}</h2>
-      <div class="menu-items">${itemsHTML}</div>
-    </div>`;
+  return createMenuSectionTemplate(category, itemsHTML);
 }
 
 /**
@@ -223,413 +210,6 @@ function scrollToCategory(category) {
   document
     .querySelector(`[data-category="${category}"]`)
     .classList.add("active");
-}
-
-/**
- * Updates cart item count display across all elements
- * @returns {void}
- */
-function updateCartCount() {
-  const totalItems = cart.reduce(function (sum, item) {
-    return sum + item.quantity;
-  }, 0);
-
-  updateCartText(totalItems);
-  updateCartDisplay();
-  updateMobileCartDisplay();
-}
-
-/**
- * Updates cart count text elements
- * @param {number} totalItems - Total number of items in cart
- * @returns {void}
- */
-function updateCartText(totalItems) {
-  const cartCount = document.querySelector(".cart-count");
-  const cartItemCount = document.getElementById("cartItemCount");
-  if (cartCount) {
-    cartCount.textContent = totalItems;
-    cartCount.style.display = totalItems > 0 ? "flex" : "none";
-  }
-
-  if (cartItemCount) {
-    cartItemCount.textContent = totalItems;
-  }
-}
-
-/**
- * Shows empty cart state in UI elements
- * @param {HTMLElement} cartItems - Cart items container
- * @param {HTMLElement} cartTotal - Cart total element
- * @param {HTMLElement} cartCheckout - Checkout button element
- * @returns {void}
- */
-function showEmptyCartState(cartItems, cartTotal, cartCheckout) {
-  if (cartItems) {
-    cartItems.innerHTML = createEmptyCartStateTemplate();
-  }
-  if (cartTotal) cartTotal.textContent = "0,00 €";
-  if (cartCheckout) {
-    cartCheckout.disabled = true;
-    cartCheckout.textContent = "Warenkorb leer";
-  }
-}
-
-/**
- * Updates cart items display
- * @param {HTMLElement} cartItems - Cart items container element
- * @returns {void}
- */
-function updateCartItems(cartItems) {
-  if (cartItems) {
-    cartItems.innerHTML = cart
-      .map((item) => createCartItemTemplate(item))
-      .join("");
-  }
-}
-
-/**
- * Calculates total cart subtotal
- * @returns {number} Cart subtotal amount
- */
-function getCartSubtotal() {
-  return cart.reduce(function (sum, item) {
-    return sum + item.price * item.quantity;
-  }, 0);
-}
-
-/**
- * Updates cart total display element
- * @param {HTMLElement} cartTotal - Cart total display element
- * @returns {void}
- */
-function updateCartTotal(cartTotal) {
-  const subtotal = getCartSubtotal();
-  if (cartTotal) {
-    cartTotal.textContent = `${subtotal.toFixed(2).replace(".", ",")} €`;
-  }
-}
-
-/**
- * Updates checkout button state and text
- * @param {HTMLElement} cartCheckout - Checkout button element
- * @returns {void}
- */
-function updateCartCheckout(cartCheckout) {
-  const subtotal = getCartSubtotal();
-
-  if (cartCheckout) {
-    const isSubtotalZero = subtotal === 0;
-    cartCheckout.disabled = isSubtotalZero;
-    if (isSubtotalZero) {
-      cartCheckout.textContent = "Warenkorb leer";
-    } else {
-      cartCheckout.textContent = `Bestellen (${subtotal
-        .toFixed(2)
-        .replace(".", ",")} €)`;
-    }
-  }
-}
-
-/**
- * Updates the sticky cart display with current cart data
- * @returns {void}
- */
-function updateCartDisplay() {
-  const cartElement = document.getElementById("cartSticky");
-  const cartItemsContainerElement = document.getElementById("cartStickyItems");
-  const cartTotalElement = document.getElementById("cartStickyTotal");
-  const cartCheckoutElement = document.getElementById("cartStickyCheckout");
-  if (!cartElement) return;
-
-  cartElement.classList.add("has-items");
-
-  if (cart.length === 0)
-    return showEmptyCartState(
-      cartItemsContainerElement,
-      cartTotalElement,
-      cartCheckoutElement
-    );
-
-  updateCartItems(cartItemsContainerElement);
-  updateCartTotal(cartTotalElement);
-  updateCartCheckout(cartCheckoutElement);
-}
-
-/**
- * Changes quantity of item in cart
- * @param {string} itemId - Unique item identifier
- * @param {number} change - Quantity change (+1 or -1)
- * @returns {void}
- */
-function changeCartQuantity(itemId, change) {
-  const itemIndex = cart.findIndex((item) => item.id === itemId);
-  if (itemIndex === -1) return;
-
-  const newQuantity = cart[itemIndex].quantity + change;
-
-  if (newQuantity <= 0) {
-    cart.splice(itemIndex, 1);
-  } else {
-    cart[itemIndex].quantity = newQuantity;
-  }
-
-  updateCartCount();
-}
-
-/**
- * Opens modal for item customization and ordering
- * @param {number} itemId - Item identifier
- * @param {string} category - Item category
- * @returns {void}
- */
-function openItemModal(itemId, category) {
-  const menu = menuData[getRestaurantId()];
-  const item = menu.items[category].find((i) => i.id === itemId);
-  if (!item) return;
-
-  initializeModalState(item);
-  populateModalContent(item);
-  renderModalCustomizations(item);
-  showModal();
-}
-
-/**
- * Initializes modal state variables
- * @param {Object} item - Menu item object
- * @returns {void}
- */
-function initializeModalState(item) {
-  modalItem = item;
-  modalQuantity = 1;
-  modalCustomizations = [];
-}
-
-/**
- * Populates modal with item information
- * @param {Object} item - Menu item object
- * @returns {void}
- */
-function populateModalContent(item) {
-  document.getElementById("modalItemImage").src = item.image;
-  document.getElementById("modalItemName").textContent = item.name;
-  document.getElementById("modalItemDescription").textContent =
-    item.description;
-  const priceText = `${item.price.toFixed(2).replace(".", ",")} €`;
-  document.getElementById("modalItemPrice").textContent = priceText;
-  document.getElementById("modalQuantity").textContent = modalQuantity;
-}
-
-/**
- * Renders customization options in modal
- * @param {Object} item - Menu item with customizations
- * @returns {void}
- */
-function renderModalCustomizations(item) {
-  const container = document.getElementById("modalCustomizations");
-  if (item.customizations && item.customizations.length > 0) {
-    container.innerHTML = item.customizations
-      .map((custom, index) => createCustomizationOptionHTML(custom, index))
-      .join("");
-  } else {
-    container.innerHTML =
-      '<p style="color: var(--text-secondary); font-style: italic;">Keine Anpassungen verfügbar</p>';
-  }
-}
-
-/**
- * Creates HTML for single customization option
- * @param {Object} custom - Customization object
- * @param {number} index - Customization index
- * @returns {string} HTML string for customization option
- */
-function createCustomizationOptionHTML(custom, index) {
-  const prefix = custom.type === "remove" ? "Ohne " : "";
-  const priceSign = custom.price > 0 ? "+" : "";
-  const priceText = `${priceSign}${custom.price
-    .toFixed(2)
-    .replace(".", ",")} €`;
-
-  return `
-    <div class="customization-option">
-      <label>
-        <input type="checkbox" onchange="toggleCustomization(${index})">
-        ${prefix}${custom.name}
-      </label>
-      <span class="customization-price">${priceText}</span>
-    </div>`;
-}
-
-/**
- * Shows the item modal and updates price
- * @returns {void}
- */
-function showModal() {
-  updateModalPrice();
-  document.getElementById("itemModalOverlay").classList.add("open");
-  document.body.style.overflow = "hidden";
-}
-
-/**
- * Closes item modal and resets state
- * @returns {void}
- */
-function closeItemModal() {
-  document.getElementById("itemModalOverlay").classList.remove("open");
-  document.body.style.overflow = "";
-  modalItem = null;
-  modalQuantity = 1;
-  modalCustomizations = [];
-}
-
-/**
- * Toggles customization selection
- * @param {number} index - Customization index
- * @returns {void}
- */
-function toggleCustomization(index) {
-  const customizationIndex = modalCustomizations.indexOf(index);
-  if (customizationIndex > -1) {
-    modalCustomizations.splice(customizationIndex, 1);
-  } else {
-    modalCustomizations.push(index);
-  }
-  updateModalPrice();
-}
-
-/**
- * Changes item quantity in modal
- * @param {number} change - Quantity change (+1 or -1)
- * @returns {void}
- */
-function changeModalQuantity(change) {
-  const newQuantity = modalQuantity + change;
-  if (newQuantity >= 1 && newQuantity <= 10) {
-    modalQuantity = newQuantity;
-    document.getElementById("modalQuantity").textContent = modalQuantity;
-    updateModalPrice();
-  }
-}
-
-/**
- * Updates total price display in modal
- * @returns {void}
- */
-function updateModalPrice() {
-  if (!modalItem) return;
-
-  let totalPrice = modalItem.price;
-
-  modalCustomizations.forEach((index) => {
-    totalPrice += modalItem.customizations[index].price;
-  });
-
-  totalPrice *= modalQuantity;
-
-  document.getElementById("modalTotalPrice").textContent = `${totalPrice
-    .toFixed(2)
-    .replace(".", ",")} €`;
-}
-
-/**
- * Checks if item matches existing cart item
- * @param {Object} newItem - New item to check
- * @param {Object} cartItem - Existing cart item
- * @returns {boolean} True if items match
- */
-function checkMatchingItems(newItem, cartItem) {
-  if (newItem.name !== cartItem.name) return false;
-  if (newItem.price !== cartItem.price) return false;
-  if (newItem.customizations.length !== cartItem.customizations.length)
-    return false;
-
-  const sortedNew = [...newItem.customizations].sort();
-  const sortedCart = [...cartItem.customizations].sort();
-
-  return sortedNew.every((custom, index) => custom === sortedCart[index]);
-}
-
-/**
- * Adds configured item from modal to cart
- * @returns {void}
- */
-function addModalItemToCart() {
-  if (!modalItem) return;
-
-  const customizationNames = getCustomizationNames();
-  const customizationPrice = getCustomizationPrice();
-  const cartItem = createCartItemFromModal(
-    customizationNames,
-    customizationPrice
-  );
-
-  const existingItemIndex = cart.findIndex((item) =>
-    checkMatchingItems(cartItem, item)
-  );
-
-  if (existingItemIndex !== -1) {
-    cart[existingItemIndex].quantity += cartItem.quantity;
-  } else {
-    cart.push(cartItem);
-  }
-
-  updateCartCount();
-  closeItemModal();
-  highlightCartAfterAdd();
-}
-
-/**
- * Gets formatted customization names
- * @returns {Array<string>} Array of customization names
- */
-function getCustomizationNames() {
-  return modalCustomizations.map((index) => {
-    const custom = modalItem.customizations[index];
-    return custom.type === "remove" ? `Ohne ${custom.name}` : custom.name;
-  });
-}
-
-/**
- * Calculates total customization price
- * @returns {number} Total customization price
- */
-function getCustomizationPrice() {
-  return modalCustomizations.reduce(
-    (sum, index) => sum + modalItem.customizations[index].price,
-    0
-  );
-}
-
-/**
- * Creates cart item object from modal data
- * @param {Array<string>} customizationNames - Selected customization names
- * @param {number} customizationPrice - Total customization price
- * @returns {Object} Cart item object
- */
-function createCartItemFromModal(customizationNames, customizationPrice) {
-  return {
-    id: `${modalItem.id}-${Date.now()}`,
-    restaurantId: getRestaurantId(),
-    name: modalItem.name,
-    price: modalItem.price + customizationPrice,
-    quantity: modalQuantity,
-    customizations: customizationNames,
-    image: modalItem.image,
-  };
-}
-
-/**
- * Highlights cart after adding item with animation
- * @returns {void}
- */
-function highlightCartAfterAdd() {
-  setTimeout(() => {
-    const cartSticky = document.getElementById("cartSticky");
-    if (cartSticky) {
-      cartSticky.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      cartSticky.classList.add("expanded");
-    }
-  }, 300);
 }
 
 /**
@@ -660,106 +240,11 @@ function showCheckoutSuccess(total) {
 }
 
 /**
- * Clears all items from cart
- * @returns {void}
- */
-function clearCart() {
-  cart = [];
-  updateCartCount();
-  closeMobileCart();
-}
-
-/**
- * Closes checkout success overlay
- * @returns {void}
- */
-function closeCheckoutSuccess() {
-  document.getElementById("checkoutSuccessOverlay").classList.remove("open");
-  document.body.style.overflow = "";
-}
-
-/**
  * Navigates back to main page
  * @returns {void}
  */
 function goBack() {
   window.location.href = "index.html";
-}
-
-/**
- * Updates mobile cart display with current data
- * @returns {void}
- */
-function updateMobileCartDisplay() {
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = getCartSubtotal();
-
-  updateMobileCartButton(totalItems, totalPrice);
-  updateMobileCartContent();
-}
-
-/**
- * Updates mobile cart button with item count and total
- * @param {number} totalItems - Total number of items
- * @param {number} totalPrice - Total cart price
- * @returns {void}
- */
-function updateMobileCartButton(totalItems, totalPrice) {
-  const button = document.getElementById("mobileCartButton");
-  const count = document.getElementById("mobileCartCount");
-  const total = document.getElementById("mobileCartTotal");
-
-  if (!button) return;
-
-  count.textContent = totalItems;
-  total.textContent = `${totalPrice.toFixed(2).replace(".", ",")} €`;
-}
-
-/**
- * Updates mobile cart content and footer
- * @returns {void}
- */
-function updateMobileCartContent() {
-  const itemsContainer = document.getElementById("mobileCartItems");
-  const itemCount = document.getElementById("mobileCartItemCount");
-  const footerTotal = document.getElementById("mobileCartFooterTotal");
-  const checkoutBtn = document.getElementById("mobileCartCheckout");
-
-  if (!itemsContainer) return;
-
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = getCartSubtotal();
-
-  itemCount.textContent = totalItems;
-  footerTotal.textContent = `${totalPrice.toFixed(2).replace(".", ",")} €`;
-
-  if (cart.length === 0) {
-    itemsContainer.innerHTML = createEmptyCartStateTemplate();
-    checkoutBtn.disabled = true;
-    checkoutBtn.textContent = "Warenkorb leer";
-  } else {
-    itemsContainer.innerHTML = cart.map(createCartItemTemplate).join("");
-    checkoutBtn.disabled = false;
-    checkoutBtn.textContent = "Bestellen";
-  }
-}
-
-/**
- * Opens mobile cart overlay
- * @returns {void}
- */
-function openMobileCart() {
-  document.getElementById("mobileCartOverlay").classList.add("open");
-  document.body.style.overflow = "hidden";
-}
-
-/**
- * Closes mobile cart overlay
- * @returns {void}
- */
-function closeMobileCart() {
-  document.getElementById("mobileCartOverlay").classList.remove("open");
-  document.body.style.overflow = "";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -779,7 +264,9 @@ window.addEventListener("scroll", function () {
   });
 
   if (currentSection) {
-    categoryButtons.forEach((btn) => (btn.classList.remove("active")));
-    if (btn.dataset.category === currentSection) btn.classList.add("active");
+    categoryButtons.forEach((btn) => {
+      btn.classList.remove("active");
+      if (btn.dataset.category === currentSection) btn.classList.add("active");
+    });
   }
 });

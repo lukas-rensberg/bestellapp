@@ -9,7 +9,7 @@
  * @param {Object} restaurant - Restaurant data object
  * @returns {string} HTML string for restaurant card
  */
-function createRestaurantCardTemplate(restaurant) {
+function createRestaurantCardTemplate(restaurant, deliveryText) {
   return `
     <div class="restaurant-card" onclick="openRestaurantDetailsPage(${
       restaurant.id
@@ -20,7 +20,7 @@ function createRestaurantCardTemplate(restaurant) {
       <div class="restaurant-info">
         ${createRestaurantHeaderTemplate(restaurant)}
         <p class="restaurant-cuisine">${restaurant.cuisine}</p>
-        ${createRestaurantDetailsTemplate(restaurant)}
+        ${createRestaurantDetailsTemplate(restaurant, deliveryText)}
       </div>
     </div>
   `;
@@ -56,12 +56,7 @@ function createRestaurantHeaderTemplate(restaurant) {
  * @param {Object} restaurant - Restaurant data object
  * @returns {string} HTML string for restaurant details
  */
-function createRestaurantDetailsTemplate(restaurant) {
-  const deliveryText =
-    restaurant.deliveryFee === 0
-      ? "Kostenlose Lieferung"
-      : `${restaurant.deliveryFee.toFixed(2).replace(".", ",")} € Lieferung`;
-
+function createRestaurantDetailsTemplate(restaurant, deliveryText) {
   return `
     <div class="restaurant-details-container">
       <div class="delivery-info"><i class="fas fa-clock"></i> <span>${restaurant.deliveryTime}</span></div>
@@ -72,19 +67,10 @@ function createRestaurantDetailsTemplate(restaurant) {
 
 /**
  * Creates HTML template for customizations list
- * @param {Array<string>} customizations - Array of customization names
+ * @param {Array<string>} customItems - Array of customization names
  * @returns {string} HTML string for customizations list
  */
-function createCustomizationsListTemplate(customizations) {
-  if (!customizations || customizations.length === 0) return "";
-
-  const customItems = customizations
-    .map((custom) => {
-      const prefix = custom.startsWith("Ohne") ? custom : "Mit " + custom;
-      return `<span class="cart-item-customization">• ${prefix}</span>`;
-    })
-    .join("");
-
+function createCustomizationsListTemplate(customItems) {
   return `<div class="cart-item-customizations">${customItems}</div>`;
 }
 
@@ -93,14 +79,7 @@ function createCustomizationsListTemplate(customizations) {
  * @param {Object} item - Cart item object
  * @returns {string} HTML string for cart item
  */
-function createCartItemTemplate(item) {
-  const customizationsList = createCustomizationsListTemplate(
-    item.customizations
-  );
-  const priceText = `${item.price.toFixed(2).replace(".", ",")} € × ${
-    item.quantity
-  }`;
-
+function createCartItemTemplate(item, customizationsList, priceText) {
   return `
     <div class="cart-item-row">
       <div class="cart-item-info">
@@ -148,11 +127,7 @@ function createCartControlsTemplate(itemId, quantity) {
  * @param {string} category - Item category
  * @returns {string} HTML string for menu item
  */
-function createMenuItemTemplate(item, category) {
-  const priceText = `${item.price.toFixed(2).replace(".", ",")} €`;
-  const fallbackImage =
-    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiNGOEZGOUZBIi8+PHBhdGggZD0iTTUwIDQwSDcwVjYwSDUwVjQwWiIgZmlsbD0iI0U5RUNFRiIvPjwvc3ZnPg==";
-
+function createMenuItemTemplate(item, category, priceText, fallbackImage) {
   return `
     <div class="menu-item" onclick="openItemModal(${item.id}, '${category}')">
       <div class="menu-item-info">
@@ -162,5 +137,24 @@ function createMenuItemTemplate(item, category) {
       </div>
       <img src="${item.image}" alt="${item.name}" class="menu-item-image" 
            onerror="this.src='${fallbackImage}'" />
+    </div>`;
+}
+
+function createCustomizationOptionTemplate(custom, index, prefix, priceText) {
+  return `
+    <div class="customization-option">
+      <label>
+        <input type="checkbox" onchange="toggleCustomization(${index})">
+        ${prefix}${custom.name}
+      </label>
+      <span class="customization-price">${priceText}</span>
+    </div>`;
+}
+
+function createMenuSectionTemplate(category, itemsHTML) {
+  return `
+    <div class="menu-section" id="section-${category}">
+      <h2 class="menu-section-title">${category}</h2>
+      <div class="menu-items">${itemsHTML}</div>
     </div>`;
 }
